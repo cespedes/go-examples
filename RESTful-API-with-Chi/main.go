@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -76,5 +77,5 @@ func getAlbumByID(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	http.Error(w, `{"message": "album not found"}`, http.StatusNotFound)
+	http.Error(w, fmt.Sprintf(`{"message": "album %s not found"}`, id), http.StatusNotFound)
 }
